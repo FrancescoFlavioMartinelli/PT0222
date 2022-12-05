@@ -1,0 +1,32 @@
+body {
+    overflow-x: scroll;
+
+    font-size: 20px;
+}
+
+div {
+    border: solid 1px black;
+    display: block;
+
+    width: 20%;
+    height: 2em;
+
+
+
+    line-height: 1em;
+
+    /* overflow-y: hidden;
+    overflow-x: hidden; */
+
+    /*1 riga e ellipsis... */
+    /* overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; */
+
+    /* Ellipsis su più righe */
+    overflow: hidden;
+    display: -webkit-box;
+
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
