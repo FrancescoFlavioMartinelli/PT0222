@@ -1,0 +1,309 @@
+body {
+    overflow-x: hidden;
+}
+
+.square {
+    width: 100px;
+    height: 100px;
+    background-color:red;
+}
+
+#square1 {
+    animation-name: anim1;
+    animation-duration: 3s;
+
+    /* animation-iteration-count:2; */
+    /*terminata l'animazione si torna allo state iniziale (senza contare le modifiche del from)*/
+    animation-iteration-count: infinite;
+
+    animation-direction: normal;
+
+    animation-timing-function: linear;
+
+    animation-delay: 1s; /* delay contato soltato al prima iterazione */
+}
+
+#square2 {
+
+    animation-name: anim2;
+    animation-duration: 2s;
+    animation-iteration-count:2;
+
+    animation-direction: alternate;
+
+
+    animation-fill-mode: forwards;
+}
+
+@keyframes anim1 {
+    from, 33% {
+        width: 100px;
+    }
+    to {
+        width:500px;
+    }
+} 
+
+@keyframes anim2 {
+    from {
+        background: green;
+    }
+    to {
+        background: blue;
+    }
+} 
+
+/**/
+
+#square3 {
+    animation-name: anim3;
+    animation-duration: 3s;
+}
+
+@keyframes anim3 {
+    from  {
+        width: 100px;
+        background-color:red;
+    }
+    25% {
+        height: 150px;
+    } 
+    50% {
+        background-color:red;
+        width: 300px;
+    }
+    75% {
+        background-color:red;
+        width: 250px;
+    }
+    to {
+        background-color: blue;
+        /* width: 250px; */
+    }
+}
+
+/* ESEMPI */
+
+/* Menu */
+#menu {
+    width: 0;
+    height: 100px;
+    background-color:red;
+
+}
+
+#menu.animated {
+    animation-name: menu-open;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+}
+
+#menu.animated.reverse {
+    animation-direction: reverse;
+    animation-iteration-count: 2;
+}
+
+@keyframes menu-open {
+    from {
+        width: 0px;
+        height: 100px;
+        background-color:red;
+    }
+    50% {
+        width: 200px;
+        height: 100px;
+        background-color:red;
+    }
+    100% {
+        width: 200px;
+        height: 100vh;
+        background-color:red;
+    }
+}
+
+/* Text */
+.text {
+    transform: translateX(0);
+
+    animation-name: text-move;
+    animation-duration: 6s;
+
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes text-move {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(100vw);
+    }
+}
+
+/* Loading */
+.loading {
+
+    width: 50px;
+    height: 50px;
+    border-top: solid 10px black;
+    border-left: solid 10px rgb(155, 155, 155);
+    border-right: solid 10px rgb(155, 155, 155);
+    border-bottom: solid 10px rgb(155, 155, 155);
+    border-radius: 50%;
+
+    position:relative;
+
+}
+
+#loading1 {
+    animation-name: spin;
+    animation-iteration-count: infinite;
+    animation-duration: 4s;
+    animation-timing-function: linear;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#loading1 .inner {
+    border-top: solid 10px black;
+    border-left: solid 10px rgb(155, 155, 155);
+    border-right: solid 10px rgb(155, 155, 155);
+    border-bottom: solid 10px rgb(155, 155, 155);
+    border-radius: 50%;
+
+    /* animation: spin infinite linear; */
+}
+
+#loading1 .inner {
+
+    width: 20px;
+    height: 20px;
+
+    animation-name: spin;
+    animation-iteration-count: infinite;
+    animation-duration: 8s;
+    animation-direction: reverse;
+    animation-timing-function: linear;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#loading2 {
+    animation-name: spin-wait;
+    animation-iteration-count: infinite;
+    animation-duration: 4s;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes spin-wait {
+    from {
+        transform: rotate(0deg);
+    }
+
+    85%, to {
+        transform: rotate(360deg);
+    }
+}
+
+/* BOUNCE */
+#loading3 {
+    margin-top: 100px;
+    display: flex;
+}
+.ball {
+    width: 30px;
+    height: 30px;
+    background: red;
+    border-radius: 50%;
+    margin: 2px;
+
+    animation-name: bounce;
+    animation-duration: 1s;
+
+    animation-iteration-count: infinite;
+}
+
+.ball:nth-of-type(1){
+    background: red;
+    animation-delay: 0;
+}
+.ball:nth-of-type(2){
+    background: blue;
+    animation-delay: .3s;
+}
+.ball:nth-of-type(3){
+    background: green;
+    animation-delay: .6s;
+}
+
+
+@keyframes bounce {
+    to, from {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-50%);
+    }
+}
+
+/*spinner*/
+
+#spinner svg {
+    width: 200px;
+    height: 200px;
+}
+
+#spinner  circle {
+    fill: none;
+    /* stroke: black; */
+    stroke-width: 3;
+    stroke-dasharray: 0, 300;
+    stroke-dashoffset: 0;
+
+    transform-origin: center center;
+
+    animation: dash .6s linear infinite, color-change 2.4s linear infinite;
+}
+
+
+#spinner circle:nth-of-type(1) {
+    animation-delay: 0s;
+}
+#spinner circle:nth-of-type(2) {
+    animation-delay: .6s;
+}
+@keyframes dash {
+    from {
+        stroke-dasharray: 0, 300;
+        stroke-dashoffset: 0;
+    }
+    to {
+        stroke-dasharray: 300, 300;
+        stroke-dashoffset: -150;
+    }
+}
+
+@keyframes color-change {
+    from, 25% {
+        stroke: red;
+    }
+    26%, 50% {
+        stroke: green
+    }
+    51%, 75% {
+        stroke: blue
+    }
+    76%, to {
+        stroke: yellow
+    }
+}
