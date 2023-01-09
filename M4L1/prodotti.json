@@ -1,0 +1,11 @@
+[
+    {
+    "prezzo": 10,
+    "nome": "maglione",
+    "colore": "verde"
+}, {
+    "prezzo": 20,
+    "nome": "pantalone",
+    "colore": "blu"
+}
+]
