@@ -1,0 +1,7 @@
+main, main .row {
+    height: 100vh;
+}
+
+#updateForm {
+    display: none;
+}
