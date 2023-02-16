@@ -1,0 +1,25 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "test123",
+      "price": "10",
+      "qnt": "1",
+      "tag": "tag1"
+    },
+    {
+      "name": "test1",
+      "price": "20",
+      "qnt": "5",
+      "tag": "tag1",
+      "id": 2
+    },
+    {
+      "name": "TEST1",
+      "price": "10",
+      "qnt": "20",
+      "tag": "tag0",
+      "id": 3
+    }
+  ]
+}
