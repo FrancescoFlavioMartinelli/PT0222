@@ -1,8 +1,0 @@
-.card {
-    width: 300px;
-    border: black solid 1px;
-}
-
-.card.active {
-    background-color: red;
-}
