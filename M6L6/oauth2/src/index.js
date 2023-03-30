@@ -4,18 +4,10 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import {BrowserRouter} from 'react-router-dom';
-
-// ROUTING#1 npm install react-router-dom
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* ROUTING#2 Circondare <App> con <BrowserRouter> */}
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-    {/* <App /> */}
+    <App />
   </React.StrictMode>
 );
 

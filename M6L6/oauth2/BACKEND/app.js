@@ -102,7 +102,43 @@ function auth(req, res, next) {
 }
 
 
-app.use("/oauth2/redirect/google")
+//PASSPORT
+const passport = require("passport")
+const GoogleStrategy = require('passport-google-oidc')
+
+passport.use(new GoogleStrategy({
+    clientID: '881592159878-0ptm0u0tkaprqh5scgg58ka6hj7i3cpt.apps.googleusercontent.com',
+    clientSecret: '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',
+    callbackURL: 'http://localhost:3005/oauth2/redirect/google'
+}), async (issuer, profile, next) =>{
+    const u = await Users.findOne({email: profile.email})
+    if(!u) {
+        //non abbiamo ancora registrato questo utente
+        const newUser = new Users({
+            ...profile,
+            username: profile.name+profile.email + Math.random()
+        })
+        newUser.save(); //utente registrato possiamo fare il login
+        next(null, newUser)
+    } else {
+        //l'utente già esiste con la stessa mail
+        //l'utente esiste perchè si è registrato con google o con altro? possiamo capirlo con issuer per questas richiesta ma per capire come l'utente era stato creato nel db deve essere segnato l'issuer della registrazione
+            //login riuscito e possiamo andare in callback passandfo l'utente letto dal nostro db
+            //se l'issuer è diverso possiamo scegliere cosa fare
+
+            //next(null, user) //login/registrazione riuscito e passo user come dato
+            //next(null, false) //login/registrazione rifiutato
+    }
+})
+
+//rotta chiamata al login
+app.use("/oauth2/google", passport.authenticate('google'))
+// app.use("/oauth2/google/login", checkIfUserExists, passport.authenticate('google'))
+// app.use("/oauth2/google/register", checkIfUserDoesntExists, passport.authenticate('google'))
+//callback che chiamerà passport
+app.use("/oauth2/redirect/google", (req, res)=>{
+    //qua usiamo i dati dell'iutente per creare la response adatta al nostro software
+})
 
 
 // app.get("/autologin", auth, (req, res)=>{

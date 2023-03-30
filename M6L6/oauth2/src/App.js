@@ -1,16 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 
-import { Form } from './Form';
+import { Form } from './Form.js';
 
 function App() {
-
-  const token = localStorage.getItem('token')
-  if(token != null) {
-    //autologin
-  }
-
-
   return (
     <div className="App">
       <Form />

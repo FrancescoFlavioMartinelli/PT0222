@@ -20,6 +20,11 @@ const schema = mongoose.Schema({
     verified: {
         type: Boolean,
         required: true
+    },
+    //questo per capire da dove è comparso l'utente (registrazione locale o terze parti)
+    issuer: {
+        type:String,
+        required: true
     }
 
 })

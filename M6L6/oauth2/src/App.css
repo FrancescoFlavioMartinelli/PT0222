@@ -36,10 +36,3 @@
     transform: rotate(360deg);
   }
 }
-
-
-nav a.active {
-  pointer-events: none;
-  font-weight: bold;
-  color: red;
-}
